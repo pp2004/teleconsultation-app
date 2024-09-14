@@ -6,21 +6,21 @@ import SimplePeer from 'simple-peer';
 const socket = io('http://localhost:5001');
 
 const VideoChat = () => {
-  // const [stream, setStream] = useState(null);
+  const [stream, setStream] = useState(null); // Define state for the stream
   const [peer, setPeer] = useState(null);
   const userVideo = useRef(null);
   const partnerVideo = useRef(null);
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        userVideo.current.srcObject = stream;
-        setStream(stream);
+      .then((mediaStream) => {
+        userVideo.current.srcObject = mediaStream;
+        setStream(mediaStream); // Set the stream state
 
         const peer = new SimplePeer({
           initiator: window.location.hash === '#init',
           trickle: false,
-          stream: stream
+          stream: mediaStream
         });
 
         peer.on('signal', (data) => {
@@ -54,10 +54,22 @@ const VideoChat = () => {
       });
 
     socket.on('ice-candidate', (data) => {
-      peer.signal(data);
+      if (peer) {
+        peer.signal(data);
+      }
     });
 
-  }, [peer]);
+    // Cleanup function to stop the media stream and close the peer connection on component unmount
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      if (peer) {
+        peer.destroy();
+      }
+    };
+
+  }, [peer, stream]); // Include stream in dependencies
 
   return (
     <div>
