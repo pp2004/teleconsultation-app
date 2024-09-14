@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import SimplePeer from 'simple-peer';
 
-const socket = io('http://localhost:5000');
+const socket = io('http://localhost:5001');
 
 const VideoChat = () => {
-  const [stream, setStream] = useState(null);
+  // const [stream, setStream] = useState(null);
   const [peer, setPeer] = useState(null);
   const userVideo = useRef(null);
   const partnerVideo = useRef(null);
@@ -57,7 +57,7 @@ const VideoChat = () => {
       peer.signal(data);
     });
 
-  }, []);
+  }, [peer]);
 
   return (
     <div>

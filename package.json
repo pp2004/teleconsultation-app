@@ -20,7 +20,9 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "rimraf": "^4.4.1",
+    "simple-peer": "^9.11.1",
     "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "web-vitals": "^4.2.3"
   },
   "scripts": {
@@ -49,4 +51,3 @@
   },
   "proxy": "http://localhost:5001"
 }
-
