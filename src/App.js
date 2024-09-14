@@ -4,6 +4,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import React from 'react';
+import VideoChat from './components/VideoChat';
+
+
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
         </a>
       </header>
       
+      <div className="App">
+      <h1>Teleconsultation App</h1>
+      <VideoChat />
+      </div>
       {/* Routing logic */}
       <Router>
         <Routes>
