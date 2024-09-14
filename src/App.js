@@ -7,17 +7,6 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
-  );
-}
-
-function App() {
-  return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -33,8 +22,17 @@ function App() {
           Learn React
         </a>
       </header>
+      
+      {/* Routing logic */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
