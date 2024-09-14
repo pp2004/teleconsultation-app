@@ -4,10 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import React from 'react';
-import VideoChat from './components/VideoChat';
-
-
+import VideoChat from './components/VideoChat.js';
 
 function App() {
   return (
@@ -27,15 +24,12 @@ function App() {
         </a>
       </header>
       
-      <div className="App">
-      <h1>Teleconsultation App</h1>
-      <VideoChat />
-      </div>
       {/* Routing logic */}
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/videochat" element={<VideoChat />} /> {/* Add this route */}
         </Routes>
       </Router>
     </div>
